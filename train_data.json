@@ -1241,7 +1241,7 @@
   },
   {
     "instruction": "Demonstrate permutations, combinations, and Cartesian products in PascalABC.NET using both arrays and sequences.",
-    "output": "var a := Arr(1,3,5,7);\na.Permutations.Println;\na.Cartesian(2).Println;\na.Permutations(2).Println;\na.Combinations(2).Println;\nPrintln;\nvar s := Seq(1,3,5,7);\ns.Permutations.Println;\ns.Cartesian(2).Println;\ns.Permutations(2).Println;\ns.Combinations(2).Println;"
+    "output": "begin\n  var a := Arr(1, 3, 5, 7);\n  a.Permutations.Println;\n  a.Cartesian(2).Println;\n  a.Permutations(2).Println;\n  a.Combinations(2).Println;\n  Println;\n  var s := Seq(1, 3, 5, 7);\n  s.Permutations.Println;\n  s.Cartesian(2).Println;\n  s.Permutations(2).Println;\n  s.Combinations(2).Println;\nend."
   },
   {
     "instruction": "Create a recursive permutation algorithm in PascalABC.NET that generates all permutations of numbers from 1 to n.",
@@ -1345,7 +1345,7 @@
   },
   {
     "instruction": "Implement ball reflection simulation in console mode using CRT module in PascalABC.NET",
-    "output": "uses CRT;\n\nconst \n  w = 80; \n  h = 24;\n\nvar\n  ax,ay: integer;\n  vx,vy: integer;\n  a: array [1..w,1..h] of char;\n\nprocedure CleanA;\nbegin\n  for var j := 1 to h do\n  for var i := 1 to w do\n    A[i,j] := ' '\nend;\n\nprocedure HorizWall(x,y,L: integer);\nbegin\n  for var i := x to x+L-1 do\n    A[i,y] := '*'\nend;\n\nprocedure VertWall(x,y,L: integer);\nbegin\n  for var j := y to y+L-1 do\n    A[x,j] := '*'\nend;\n\nprocedure Fill;\nbegin\n  CleanA;\n  HorizWall(1,1,w);\n  HorizWall(1,h,w);\n  VertWall(1,1,h);\n  VertWall(w,1,h);\n  HorizWall(49,9,31);\n  HorizWall(49,14,31);\nend;\n\nprocedure DrawScreen;\nbegin\n  TextColor(White);\n  ClrScr;\n  for var j := 1 to h do\n  for var i := 1 to w do\n    write(A[i,j])\nend;\n\nfunction FilledInFront: boolean;\nbegin\n  Result := (A[ax+vx,ay]<>' ') or (A[ax,ay+vy]<>' ') or (A[ax+vx,ay+vy]<>' ')\nend;\n\nprocedure ChangeDirection;\nbegin\n  if A[ax+vx,ay]<>' ' then \n    vx := -vx;\n  if A[ax,ay+vy]<>' ' then \n    vy := -vy;\n  if (A[ax+vx,ay]=' ') and (A[ax,ay+vy]=' ') and (A[ax+vx,ay+vy]<>' ') then\n  begin\n    vx := -vx;\n    vy := -vy\n  end;\n  Sleep(10);\nend;\n\nprocedure ShowBall;\nbegin\n  GotoXY(ax,ay);\n  write('B');\nend;\n\nprocedure HideBall;\nbegin\n  GotoXY(ax,ay);\n  write(' ');\nend;\n\nprocedure SetBallCoords(x,y: integer);\nbegin\n  ax := x;\n  ay := y\nend;\n\nprocedure SetBallVeloc(vx0,vy0: integer);\nbegin\n  vx := vx0;\n  vy := vy0\nend;\n\nprocedure MoveTo(x,y: integer);\nbegin\n  HideBall;\n  SetBallCoords(x,y);\n  ShowBall\nend;\n\nprocedure MoveBy(dx,dy: integer);\nbegin\n  MoveTo(ax+dx,ay+dy);\nend;\n\nBEGIN\n  SetWindowTitle('Billiard (CRT nostalgia)');\n  HideCursor;\n  Fill;\n  DrawScreen;\n  SetBallCoords(70,13);\n  SetBallVeloc(1,1);\n  TextColor(Yellow);\n  ShowBall;\n  repeat\n    Delay(20);\n    if FilledInFront then \n      ChangeDirection;\n    MoveBy(vx,vy);\n  until KeyPressed;\nEND."
+    "output": "uses CRT;\n\nconst \n  w = 80; \n  h = 24;\n\nvar\n  ax,ay: integer;\n  vx,vy: integer;\n  a: array [1..w,1..h] of char;\n\nprocedure CleanA;\nbegin\n  for var j := 1 to h do\n  for var i := 1 to w do\n    A[i,j] := ' '\nend;\n\nprocedure HorizWall(x,y,L: integer);\nbegin\n  for var i := x to x+L-1 do\n    A[i,y] := '*'\nend;\n\nprocedure VertWall(x,y,L: integer);\nbegin\n  for var j := y to y+L-1 do\n    A[x,j] := '*'\nend;\n\nprocedure Fill;\nbegin\n  CleanA;\n  HorizWall(1,1,w);\n  HorizWall(1,h,w);\n  VertWall(1,1,h);\n  VertWall(w,1,h);\n  HorizWall(49,9,31);\n  HorizWall(49,14,31);\nend;\n\nprocedure DrawScreen;\nbegin\n  TextColor(White);\n  ClrScr;\n  for var j := 1 to h do\n  for var i := 1 to w do\n    write(A[i,j])\nend;\n\nfunction FilledInFront: boolean;\nbegin\n  Result := (A[ax+vx,ay]<>' ') or (A[ax,ay+vy]<>' ') or (A[ax+vx,ay+vy]<>' ')\nend;\n\nprocedure ChangeDirection;\nbegin\n  if A[ax+vx,ay]<>' ' then \n    vx := -vx;\n  if A[ax,ay+vy]<>' ' then \n    vy := -vy;\n  if (A[ax+vx,ay]=' ') and (A[ax,ay+vy]=' ') and (A[ax+vx,ay+vy]<>' ') then\n  begin\n    vx := -vx;\n    vy := -vy\n  end;\n  Sleep(10);\nend;\n\nprocedure ShowBall;\nbegin\n  GotoXY(ax,ay);\n  write('B');\nend;\n\nprocedure HideBall;\nbegin\n  GotoXY(ax,ay);\n  write(' ');\nend;\n\nprocedure SetBallCoords(x,y: integer);\nbegin\n  ax := x;\n  ay := y\nend;\n\nprocedure SetBallVeloc(vx0,vy0: integer);\nbegin\n  vx := vx0;\n  vy := vy0\nend;\n\nprocedure MoveTo(x,y: integer);\nbegin\n  HideBall;\n  SetBallCoords(x,y);\n  ShowBall\nend;\n\nprocedure MoveBy(dx,dy: integer);\nbegin\n  MoveTo(ax+dx,ay+dy);\nend;\n\nbegin\n  SetWindowTitle('Billiard (CRT nostalgia)');\n  HideCursor;\n  Fill;\n  DrawScreen;\n  SetBallCoords(70,13);\n  SetBallVeloc(1,1);\n  TextColor(Yellow);\n  ShowBall;\n  repeat\n    Delay(20);\n    if FilledInFront then \n      ChangeDirection;\n    MoveBy(vx,vy);\n  until KeyPressed;\nend."
   },
   {
     "instruction": "Implement bisection method for root finding in PascalABC.NET",
@@ -1645,7 +1645,7 @@
   },
   {
     "instruction": "Calculate square root using iterative method in PascalABC.NET",
-    "output": "var x := 2.0;\nSeqGen(6,x,a \u2192 (a + x/a) / 2).Last.Println;\nx.Sqrt.Print;"
+    "output": "begin\n  var x := 2.0;\n  SeqGen(6, x, a -> (a + x / a) / 2).Last.Println;\n  x.Sqrt.Print;\nend."
   },
   {
     "instruction": "Demonstrate array and set operations with square brackets in PascalABC.NET",
@@ -2005,7 +2005,7 @@
   },
   {
     "instruction": "Create a short program that uses modules in compact syntax to create a 3D sphere.",
-    "output": "uses Graph3D;\nSphere(Origin,1);"
+    "output": "uses Graph3D;\nbegin\n  Sphere(Origin,1);\nend."
   },
   {
     "instruction": "Create a program that demonstrates vector algebra operations using NumLibABC module.",
@@ -12149,7 +12149,7 @@
   },
   {
     "instruction": "Write a PascalABC.NET program that demonstrates various conditional structures. Include examples of: if statements with single and multiple conditions, if-else statements, nested if-else chains, case statements for month-based season detection, the ternary conditional operator using 'if' syntax, and the C-style ternary operator using '?' syntax.",
-    "output": "// if statement\nif condition then\n  operator;\n\nif condition then\n  operator\nelse operator;\n\nif condition then\n  operator\nelse if condition then\n  operator\nelse operator;\n\n// case statement\ncase Month of\n  3..5: Print('Spring');\n  6..8: Print('Summer');\n  9..11: Print('Autumn');\n  12,1,2: Print('Winter');\n  else throw ArgumentException('Bad Month')\nend;\n\n// ternary operator\nvar min := if a < b then a else b;\n\n// ternary operator in C style\nvar min := a < b ? a : b;"
+    "output": "begin\n  // if statement\n  if condition then\n    operator;\n\n  if condition then\n    operator\n  else \n    operator;\n\n  if condition then\n    operator\n  else if condition then\n    operator\n  else \n    operator;\n\n  // case statement\n  case Month of\n    3..5: Print('Spring');\n    6..8: Print('Summer');\n    9..11: Print('Autumn');\n    12,1,2: Print('Winter');\n  else throw ArgumentException('Bad Month')\n  end;\n\n  // ternary operator\n  var min := if a < b then a else b;\n\n  // ternary operator in C style\n  var min := a < b ? a : b;\nend."
   },
   {
     "instruction": "Write a PascalABC.NET program that demonstrates the 'continue' statement in a loop. Loop from 1 to 10. For each number, print it without a newline. If the number is divisible by 5, print a newline and continue to the next iteration. Otherwise, print a comma and a space after the number.",
@@ -14682,10 +14682,6 @@
   {
     "instruction": "Write a PascalABC.NET program that demonstrates special floating-point values: positive infinity, negative infinity, and NaN. Show how they are generated and how to check for them.",
     "output": "##\n// +\u221e: result of division by zero or constant PositiveInfinity\nvar posInf := real.PositiveInfinity;\nvar posInf2 := 1.0/0.0;\nPrintln($'+\u221e: {posInf}  Check: {real.IsPositiveInfinity(posInf)}');\nPrintln($'1/0 \u2192 {posInf2}');\n\n// -\u221e: negative division by zero or constant NegativeInfinity\nvar negInf := real.NegativeInfinity;\nvar negInf2 := -1.0/0.0;\nPrintln($'-\u221e: {negInf}  Check: {real.IsNegativeInfinity(negInf)}');\nPrintln($'-1/0 \u2192 {negInf2}');\n\n// NaN: \"not a number\" \u2013 result of invalid operations\nvar nanVal := real.NaN;\nvar nanVal2 := Sqrt(-1);\nPrintln($'NaN: {nanVal}  Check: {real.IsNaN(nanVal)}');\nPrintln($'Sqrt(-1) \u2192 {nanVal2}');"
-  },
-  {
-    "instruction": "Write a PascalABC.NET program that demonstrates emoji comments. The file contains various emoji comments describing different code characteristics.",
-    "output": "// \ud83e\udee1 \u2014 works - and that's fine\n// \ud83e\udd2f \u2014 bug appeared unexpectedly\n// \ud83e\udd16 \u2014 asked ChatGPT, and it works\n// \ud83d\udd25 \u2014 especially cool piece of code\n// \ud83d\udc80 \u2014 dangerous but working hardcore\n// \ud83d\udc22 \u2014 works slowly but surely\n// \ud83e\ude84 \u2014 magic, clever solution\n// \ud83e\udde0 \u2014 very smart algorithm\n// \ud83d\udca9 \u2014 bad code, but works\n// \u26a1 \u2014 optimization, speedup\n// \ud83d\udd75\ufe0f\u200d \u2014 investigating bug\n// \ud83c\udfaf \u2014 correctly solved problem\n// \ud83c\udf00 \u2014 chaotic code section\n// \ud83d\udee0\ufe0f \u2014 will fix later (no)\n// \ud83d\udcda \u2014 copied from textbook\n// \ud83e\udd77 \u2014 hidden trick or easter egg\n// \ud83c\udf89 \u2014 it works!!!\n// \u2728 \u2014 beautiful, damn\n// \ud83e\udee1 \u2014 stylish, modern, youthful\n// \ud83d\udcbe \u2014 memory used efficiently\n// \ud83d\udc7d \u2014 aliens helped write this fragment"
   },
   {
     "instruction": "Write a PascalABC.NET program that implements a simple linear regression model for predicting exam scores based on preparation hours and sleep hours. Use gradient descent to optimize weights and bias.",

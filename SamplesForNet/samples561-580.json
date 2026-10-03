@@ -21,7 +21,7 @@
   },
   {
     "instruction": "Create a short program that uses modules in compact syntax to create a 3D sphere.",
-    "output": "uses Graph3D;\nSphere(Origin,1);"
+    "output": "uses Graph3D;\nbegin\n  Sphere(Origin,1);\nend."
   },
   {
     "instruction": "Create a program that demonstrates vector algebra operations using NumLibABC module.",

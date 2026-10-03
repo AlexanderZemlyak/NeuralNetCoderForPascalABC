@@ -61,7 +61,7 @@
   },
   {
     "instruction": "Demonstrate permutations, combinations, and Cartesian products in PascalABC.NET using both arrays and sequences.",
-    "output": "var a := Arr(1,3,5,7);\na.Permutations.Println;\na.Cartesian(2).Println;\na.Permutations(2).Println;\na.Combinations(2).Println;\nPrintln;\nvar s := Seq(1,3,5,7);\ns.Permutations.Println;\ns.Cartesian(2).Println;\ns.Permutations(2).Println;\ns.Combinations(2).Println;"
+    "output": "begin\n  var a := Arr(1, 3, 5, 7);\n  a.Permutations.Println;\n  a.Cartesian(2).Println;\n  a.Permutations(2).Println;\n  a.Combinations(2).Println;\n  Println;\n  var s := Seq(1, 3, 5, 7);\n  s.Permutations.Println;\n  s.Cartesian(2).Println;\n  s.Permutations(2).Println;\n  s.Combinations(2).Println;\nend."
   },
   {
     "instruction": "Create a recursive permutation algorithm in PascalABC.NET that generates all permutations of numbers from 1 to n.",

@@ -45,7 +45,7 @@
   },
   {
     "instruction": "Calculate square root using iterative method in PascalABC.NET",
-    "output": "var x := 2.0;\nSeqGen(6,x,a → (a + x/a) / 2).Last.Println;\nx.Sqrt.Print;"
+    "output": "begin\n  var x := 2.0;\n  SeqGen(6, x, a -> (a + x / a) / 2).Last.Println;\n  x.Sqrt.Print;\nend."
   },
   {
     "instruction": "Demonstrate array and set operations with square brackets in PascalABC.NET",
