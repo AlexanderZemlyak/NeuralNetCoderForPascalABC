@@ -7,9 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1iv5f93Dqyk0soNcvDd9Bc-kN90sQjSif
 """
 
-!pip install trl bitsandbytes
-!pip install -U torchao
-
 import json
 import random
 import re
