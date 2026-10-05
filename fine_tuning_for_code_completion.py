@@ -406,7 +406,7 @@ def start_fine_tuning():
   # print("Загрузка базовой модели в 4-бит...")
   model = AutoModelForCausalLM.from_pretrained(
     config.model_name,
-    torch_dtype=torch.float32,
+    torch_dtype=torch.float16,
     # quantization_config=bnb_config,
     device_map="auto",
     trust_remote_code=True
@@ -439,21 +439,22 @@ def start_fine_tuning():
       per_device_train_batch_size=config.batch_size,
       per_device_eval_batch_size=config.batch_size,
       gradient_accumulation_steps=config.gradient_accumulation_steps,
+      loss_type="nll",
       eval_strategy="steps",            # Рассчитываем Loss каждую эпоху
       eval_steps=eval_every_steps,
       logging_strategy="steps",
-      logging_steps=1,
+      logging_steps=10,
       learning_rate=config.learning_rate,
       num_train_epochs=config.epochs,
       bf16=False,
-      fp16=False,
+      fp16=True,
       save_strategy="steps",
       save_steps=eval_every_steps,
       report_to="none",
       disable_tqdm=True,
       dataset_text_field="text",
       max_length=config.max_seq_length,
-      # lr_scheduler_type="cosine", # Плавное затухание
+      lr_scheduler_type="cosine", # Плавное затухание
       # warmup_ratio=0.03,          # Мягкий старт
   )
 
